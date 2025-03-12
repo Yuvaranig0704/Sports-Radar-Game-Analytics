@@ -1,0 +1,52 @@
+DOUBLE COMPITITOR RANKING 
+
+1.Get all competitors with their rank and points.
+
+	SELECT c.name, cr.ranks, cr.points
+	FROM competitors c
+	JOIN competitor_rankings cr
+	ON c.competitor_id = cr.competitor_id
+	ORDER BY cr.ranks ASC;
+
+2.Find competitors ranked in the top 5.
+
+	SELECT c.name, cr.ranks
+	FROM competitors c
+	JOIN competitor_rankings cr
+	ON c.competitor_id = cr.competitor_id
+	WHERE cr.ranks <= 5
+	ORDER BY cr.ranks;
+
+3.List competitors with no rank movement (stable rank).
+
+	SELECT c.name, cr.ranks, cr.movement
+	FROM competitors c
+	JOIN competitor_rankings cr
+	ON c.competitor_id = cr.competitor_id
+	WHERE cr.movement = 0
+	ORDER BY cr.ranks;
+
+4.Get the total points of competitors from a specific country (e.g., Croatia).
+
+	SELECT c.country, SUM(cr.points) AS total_points
+	FROM competitors c
+	JOIN competitor_rankings cr
+	ON c.competitor_id = cr.competitor_id
+	WHERE c.country = "Croatia"
+	GROUP BY c.country;
+
+5.Count the number of competitors per country.
+
+	SELECT c.country, COUNT(c.competitor_id) AS number_of_competitors
+	FROM competitors c
+	GROUP BY c.country
+	ORDER BY number_of_competitors;
+
+6.Find competitors with the highest points in the current week.
+
+	SELECT c.name, cr.points
+	FROM competitors c
+	JOIN competitor_rankings cr
+	ON c.competitor_id = cr.competitor_id
+	ORDER BY cr.points DESC;
+

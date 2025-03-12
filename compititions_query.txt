@@ -1,0 +1,60 @@
+COMPITITIONS QUERY
+
+"1)List all competitions along with their category name"
+	SELECT 
+    		competitions.competition_name,
+    		categories.category_name
+	FROM competitions
+	LEFT JOIN categories 
+   	ON competitions.category_id = categories.category_id;
+
+"2)Count the number of competitions in each category"
+
+	SELECT 
+    		categories.category_name,count(competitions.competition_id) as total_competitions
+	from categories
+	left join competitions on categories.category_id=competitions.category_id
+	group by categories.category_name
+	order by total_competition;
+
+"3)Find all competitions of type 'doubles'"
+
+	select 
+		competition_id,competition_name,type,gender,category_id 
+	from competitions where type="doubles";
+
+ "4)Get competitions that belong to a specific category (e.g., ITF Men)"
+  
+	select competitions.competition_id,competitions.competition_name,competitions.parent_id,
+		competitions.type,competitions.gender,categories.category_name
+		from competitions join categories 
+    		on competitions.category_id = categories.category_id where category_name="ITF Men";
+
+"5)Identify parent competitions and their sub-competitions"
+
+	select parent.competition_name as parent_competition,
+		child.competition_name as sub_competition
+        	from competitions parent
+        	join competitions child
+        	on parent.competition_id=child.parent_id
+        	order by parent.competition_name;
+
+"6)Analyze the distribution of competition types by category"
+
+select cat.category_name,c.type,count(c.competition_id)as competition_count
+		from competitions c
+        join categories cat
+        on c.category_id=cat.category_id
+        group by cat.category_name,c.type
+        order by cat.category_name,competition_count ;
+
+"7)List all competitions with no parent (top-level competitions)"
+
+SELECT 
+    competition_id,
+    competition_name,
+    type,
+    gender,
+    category_id
+FROM competitions
+WHERE parent_id IS NULL;

@@ -1,0 +1,68 @@
+COMPLEXES QUERY
+
+1) List all venues along with their associated complex name:
+
+SELECT 
+	v.*,
+	c.complex_name 
+FROM venues v 
+JOIN complexes c ON v.complex_id = c.complex_id
+ORDER BY v.venue_name, c.complex_name;
+
+2) Count the number of venues in each complex:
+
+SELECT 
+    c.complex_name, 
+    COUNT(v.venue_id) AS count_of_venues 
+FROM venues v 
+JOIN complexes c ON c.complex_id = v.complex_id 
+GROUP BY c.complex_name 
+ORDER BY count_of_venues;
+
+3) Get details of venues in a specific country (e.g., Chile):
+
+SELECT * 
+FROM venues 
+WHERE country_name = 'Chile';
+
+4) Identify all venues and their timezones:
+
+SELECT 
+    venue_name, 
+    timezone 
+FROM venues 
+ORDER BY timezone;
+
+5) Find complexes that have more than one venue:
+
+SELECT 
+    c.complex_name, 
+    COUNT(v.venue_id) AS count_of_venues 
+FROM complexes c 
+JOIN venues v ON c.complex_id = v.complex_id 
+GROUP BY c.complex_name 
+HAVING COUNT(v.venue_id) > 1 
+ORDER BY count_of_venues;
+
+6) List venues grouped by country:
+
+SELECT 
+    country_name, 
+    COUNT(venue_id) AS count_of_venues 
+FROM venues 
+GROUP BY country_name 
+ORDER BY count_of_venues;
+
+7) Find all venues for a specific complex (e.g., Nacional):
+
+SELECT 
+    v.venue_name, 
+    v.city_name, 
+    v.country_name, 
+    c.complex_name 
+FROM venues v
+JOIN complexes c ON v.complex_id = c.complex_id
+WHERE c.complex_name = 'Nacional';
+
+
+
