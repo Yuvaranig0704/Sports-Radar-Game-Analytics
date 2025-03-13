@@ -2,20 +2,22 @@
 
 Game-Analytics
 
-#Project Overview
+# Project Overview
 The **Game-Analytics** project aims to develop a comprehensive solution for managing, visualizing, and analyzing sports competition data extracted from the Sportradar API. The application will parse JSON data, store structured information in a relational database, and provide intuitive insights into competitions, competition hierarchies, and event details. This project is designed to assist sports enthusiasts, analysts, and organizations in understanding competition structures and trends while exploring detailed event-specific information interactively.
 
-#Skills Acquired
+# Skills Acquired
+
     *Python scripting for data extraction and transformation.
     *API Integration with Sportradar for retrieving sports data.
     *SQL for data management and creating relational databases.
     *Streamlit for interactive visualizations.
     
-#Domain
+# Domain
+
     *Sports Analytics
     *Data Analytics
     
-#Problem Statement
+# Problem Statement
 The objective is to build a system that:
 
     *Extracts data from the Sportradar API.
@@ -23,7 +25,7 @@ The objective is to build a system that:
     *Stores the data in a structured relational database (SQL).
     *Provides interactive analysis tools and visualizations.
 
-#Features
+# Features
 
 - **Competition Management:** 
 	View detailed information about competitions, including types and categories.
@@ -50,7 +52,7 @@ The objective is to build a system that:
 - MySQL Server
 - Virtual environment
 
-##Run the Application
+## Run the Application
 Start the Streamlit app with:sports_radar_api.py
 
 ## Demo Walkthrough
