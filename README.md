@@ -46,7 +46,7 @@ The objective is to build a system that:
 - **Visualization:** Plotly Express
 - **Data Source:** Sportradar API
 
-## Setup Instructions
+## Setup Instructions:
 ## Prerequisites
 - Python 
 - MySQL Server
